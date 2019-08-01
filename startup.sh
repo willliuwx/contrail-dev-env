@@ -80,6 +80,7 @@ echo "${rpm_source} created."
 if ! is_created "contrail-dev-env-rpm-repo"; then
   docker run -t --privileged --name contrail-dev-env-rpm-repo \
     -d -p 6667:80 \
+    -v /dev/pts:/dev/pts \
     -v ${rpm_source}:/var/www/localhost/htdocs \
     m4rcu5/lighttpd >/dev/null
   echo contrail-dev-env-rpm-repo created.
